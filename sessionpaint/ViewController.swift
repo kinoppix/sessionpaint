@@ -15,6 +15,11 @@ class ViewController: NSViewController {
     var path: String = ""
     
     @IBOutlet weak var imageView: NSImageView!
+    @IBOutlet weak var slider: NSSlider!
+    
+    @IBAction func sliderAction(_ sender: Any) {
+        imageView.alphaValue = CGFloat(slider.floatValue)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +67,11 @@ class ViewController: NSViewController {
     }
     
     func setWindowTap() {
-        if let appDelegate = appDelegate {
-            self.view.window?.ignoresMouseEvents = appDelegate.tapEnableMenu.state != .on
+        guard let appDelegate = appDelegate else {
+            return
         }
+        self.view.window?.ignoresMouseEvents = appDelegate.tapEnableMenu.state != .on
+        slider.isHidden = appDelegate.tapEnableMenu.state != .on
     }
 
 }

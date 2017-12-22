@@ -198,16 +198,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="VYR-av-dnq"/>
                             </imageView>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aSC-BD-dWn">
+                                <rect key="frame" x="3" y="3" width="444" height="19"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="leG-WB-26i"/>
+                                <connections>
+                                    <action selector="sliderAction:" target="rKW-9e-1Mz" id="MZY-h5-lOx"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aSC-BD-dWn" secondAttribute="bottom" constant="5" id="AMs-cI-pAz"/>
                             <constraint firstAttribute="bottom" secondItem="92e-gH-ahF" secondAttribute="bottom" id="Cfp-ew-9ir"/>
+                            <constraint firstItem="aSC-BD-dWn" firstAttribute="centerX" secondItem="ihy-Q0-xa8" secondAttribute="centerX" id="EWr-iw-RK9"/>
+                            <constraint firstAttribute="trailing" secondItem="aSC-BD-dWn" secondAttribute="trailing" constant="5" id="RBC-ey-DiX"/>
                             <constraint firstItem="92e-gH-ahF" firstAttribute="top" secondItem="ihy-Q0-xa8" secondAttribute="top" id="WkD-fz-uGK"/>
                             <constraint firstAttribute="trailing" secondItem="92e-gH-ahF" secondAttribute="trailing" id="arc-Yz-Av5"/>
                             <constraint firstItem="92e-gH-ahF" firstAttribute="leading" secondItem="ihy-Q0-xa8" secondAttribute="leading" id="iJr-YW-8Dv"/>
+                            <constraint firstItem="aSC-BD-dWn" firstAttribute="leading" secondItem="ihy-Q0-xa8" secondAttribute="leading" constant="5" id="nTI-1F-bZm"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="92e-gH-ahF" id="DZw-GM-Zep"/>
+                        <outlet property="slider" destination="aSC-BD-dWn" id="Yrj-Cv-i7a"/>
                     </connections>
                 </viewController>
                 <customObject id="SDf-C6-aCa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
