@@ -11,7 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    @IBOutlet weak var tapEnableMenu: NSMenuItem!
+    
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -21,6 +22,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-
+    @IBAction func onClickedMenuItem(_ sender: Any) {
+        toggleMenuChecked()
+        
+        NotificationCenter.default.post(name: NSNotification.Name("tapEnable"), object: nil)
+    }
+    
+    func toggleMenuChecked(){
+        tapEnableMenu.state = tapEnableMenu.state == .on ? .off : .on
+    }
 }
 

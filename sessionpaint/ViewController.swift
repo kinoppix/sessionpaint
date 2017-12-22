@@ -10,6 +10,8 @@ import Cocoa
 
 class ViewController: NSViewController {
     
+    var appDelegate: AppDelegate? = nil
+
     var path: String = ""
     
     @IBOutlet weak var imageView: NSImageView!
@@ -17,7 +19,10 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        appDelegate = NSApplication.shared.delegate as? AppDelegate
         self.imageView.imageScaling = .scaleProportionallyUpOrDown
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nCenter), name: NSNotification.Name("tapEnable"), object: nil)
     }
     
     override func viewDidAppear() {
@@ -29,7 +34,7 @@ class ViewController: NSViewController {
         if let window = self.view.window {
             window.isOpaque = false
             window.backgroundColor = .clear
-            window.ignoresMouseEvents = true
+            setWindowTap()
         }
         let dialog = NSOpenPanel() //ファイルを開くダイアログ
         dialog.canChooseDirectories=false // ディレクトリを選択できるか
@@ -51,6 +56,15 @@ class ViewController: NSViewController {
         }
     }
 
+    @objc func nCenter(notification: NSNotification){
+        setWindowTap()
+    }
+    
+    func setWindowTap() {
+        if let appDelegate = appDelegate {
+            self.view.window?.ignoresMouseEvents = appDelegate.tapEnableMenu.state != .on
+        }
+    }
 
 }
 
