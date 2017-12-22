@@ -32,6 +32,7 @@ class ViewController: NSViewController {
         
         
         if let window = self.view.window {
+            window.level = .floating //ウインドウの表示レイヤーの設定
             window.isOpaque = false
             window.backgroundColor = .clear
             setWindowTap()
