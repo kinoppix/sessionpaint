@@ -17,6 +17,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.imageView.imageScaling = .scaleProportionallyUpOrDown
     }
     
     override func viewDidAppear() {
